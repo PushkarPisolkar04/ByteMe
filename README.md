@@ -34,10 +34,18 @@ ByteMe is a **powerful, multi-directional conversion tool** that supports **130 
 5. **Error Handling**
    ![Error Handling](screenshots/error_handling.png)
 ---
-
-🛠️ Tech Stack
-Frontend: React.js / Next.js
-Backend: Node.js / Express
-Database: N/A (no persistence needed)
-Other Tools: Vite, Tailwind CSS
-
+## 🛠 Tech Stack
+ByteMe is built using the following technologies:
+### Frontend:
+- ⚛️ **React (Vite)**
+- 🎨 **CSS**
+### Backend:
+- 🟢 **Node.js**
+- ⚡ **Express.js**
+### Other Tools:
+- 📦 **npm**
+- 🌐 **Git & GitHub**
+---
+### Step 1: Clone the Repository  
+git clone https://github.com/your-username/ByteMe.git
+cd ByteMe
