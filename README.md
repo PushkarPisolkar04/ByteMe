@@ -23,38 +23,17 @@ ByteMe is a **powerful, multi-directional conversion tool** that supports **130 
 - **Base64** → Base-32
 ---
 ## 🖥️ **Screenshots**  
-
-📌 **Screenshots to Include:**  
 1. **Homepage**
    ![Homepage UI](screenshots/UI.png)
-3. **Number Conversion** – A working example of Binary → Decimal conversion.  
-4. **Step-by-Step Explanation** – Screenshot of stepwise conversion process.  
-5. **Comparison Table View** – A comparison of multiple number systems.  
-6. **Interactive Diagram / Tooltip** – Example of visualized bitwise conversion.  
-7. **Error Handling** – Screenshot of invalid input detection and user-friendly error message.  
-
-📌 **How to Insert Screenshots in README?**  
-```md
-## 🖥️ Screenshots
-
-### 1️⃣ **Homepage UI**
-![Homepage](screenshots/homepage.png)
-
-### 2️⃣ **Binary to Decimal Conversion**
-![Binary to Decimal](screenshots/binary_to_decimal.png)
-
-### 3️⃣ **Step-by-Step Explanation**
-![Step Explanation](screenshots/step_explanation.png)
-
-### 4️⃣ **Comparison Table View**
-![Comparison Table](screenshots/comparison_table.png)
-
-### 5️⃣ **Interactive Tooltip & Diagrams**
-![Tooltip Example](screenshots/tooltip_example.png)
-
-### 6️⃣ **Error Handling & Validation**
-![Error Handling](screenshots/error_handling.png)
-
+2. **Number Conversion**
+   ![Conversion](screenshots/binarytodecimal.png)
+3. **Conversions Possible**
+   ![Possible Conversions](screenshots/conversions.png)
+4. **ASCII Conversion**
+   ![ASCII Conversion](screenshots/example.png)
+5. **Error Handling**
+   ![Error Handling](screenshots/error_handling.png)
+---
 
 🛠️ Tech Stack
 Frontend: React.js / Next.js
