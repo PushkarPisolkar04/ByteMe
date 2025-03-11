@@ -1,0 +1,254 @@
+/* Root and Global Styles */
+:root {
+  --primary-color: #9158f3; /* Purple */
+  --primary-hover: #9158f3; /* Darker purple for hover effect */
+  --background-color: #f3e5f5; /* Light purple background */
+  --text-color: #263238; /* Dark gray text for readability */
+  --secondary-color: #9158f3; /* Deep purple */
+  --secondary-hover: #7729ff; /* Darker purple for hover effect */
+  --error-color: #f44336; /* Bright red for errors */
+  --input-background: #ffffff; /* White background for inputs */
+  --input-focus-border: #7f36ff; /* Vibrant teal for input focus */
+  --box-shadow: rgba(0, 0, 0, 0.2); /* Stronger shadow for elements */
+  
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* General Body Layout */
+body {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--background-color);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Title and Text Styling */
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--secondary-color);
+  background: linear-gradient(45deg, #9c27b0, #673ab7); /* Gradient from purple to deep purple */
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* WebKit support */
+  -moz-background-clip: text; /* Mozilla support */
+  color: transparent;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 2.2rem; /* Larger size for heading */
+  color: var(--primary-color);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+  padding: 12px;
+  border-radius: 10px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Main Container */
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px; /* Increased padding */
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px var(--box-shadow);
+  margin-top: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Form and Input Styling */
+select, input {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+}
+
+select:hover, input:hover,
+select:focus, input:focus {
+  border-color: var(--input-focus-border);
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 150, 136, 0.3);
+  outline: none;
+}
+
+/* Button Styling */
+button {
+  padding: 18px;
+  font-size: 1.2rem;
+  border: none;
+  background: var(--secondary-color);
+  color: white;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease;
+  width: 100%;
+  max-width: 500px;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background: var(--secondary-hover);
+  transform: scale(1.05);
+}
+
+button:active {
+  background: #512da8;
+  transform: scale(1);
+}
+
+/* Error Message and Result Display */
+.error, .result {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 16px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.error {
+  color: var(--error-color);
+  background: rgba(244, 67, 54, 0.1);
+  font-size: 16px;
+  margin-top: 20px;
+  border-left: 5px solid var(--error-color);
+  animation: fadeIn 1s ease-in-out;
+}
+.result {
+  margin: 20px auto;  /* Center align the box */
+  padding: 12px 16px;  /* Add padding */
+  background-color: #f8f9fa;
+  border: 3px solid #388e3c;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #388e3c;
+  max-width: 90%;  /* Prevent it from going out of screen */
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* Center align content */
+  gap: 10px;  /* Space between "Result:" and value */
+  text-align: center;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  word-break: break-word;  /* Allow breaking long words */
+  overflow-wrap: break-word;  /* Ensures it wraps inside the container */
+  white-space: normal;  /* Allows text to wrap */
+}
+
+/* Animation for fadeIn and slideIn */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Converter Container */
+.converter-container {
+  width: 100%; 
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px var(--box-shadow);
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.converter-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Group and Label Styling */
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+  color: #263238;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 600px) {
+  .container, .converter-container {
+    padding: 15px;
+  }
+
+  .converter-container {
+    width: 100%;
+  }
+
+  h2 { font-size: 1.8rem; } 
+  .form-group label { font-size: 14px; }
+
+  select, input {
+    font-size: 14px;
+    padding: 14px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 14px;
+  }
+
+  .result {
+    font-size: 1.6rem;
+  }
+
+  .error {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
