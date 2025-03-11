@@ -2,8 +2,10 @@
 ![ByteMe Logo](screenshots/logo.png)
 
 ## 📌 **About ByteMe**  
-ByteMe is a **powerful, multi-directional conversion tool** that supports **130 different conversion types**! Whether you need to convert **binary, decimal, hexadecimal, octal, IEEE 754, ASCII, Unicode, floating-point, BCD, Gray code**, or even **Roman numerals**, ByteMe has got you covered.  
+ByteMe is a powerful, multi-directional conversion tool that supports **130 different conversion types!** Whether you need to convert binary, decimal, hexadecimal, octal, IEEE 754, ASCII, Unicode, floating-point, BCD, Gray code, or even Roman numerals, ByteMe has got you covered.  
+
 ---
+
 ## 🔢 **Supported Conversions**  
 ### **➤ Number System Conversions**  
 - **Binary** → Decimal, Hexadecimal, Octal, Gray Code, BCD, Excess-3, Floating Point, IEEE 754, Hamming Code, Parity Bit, Two's Complement, Roman Numerals, ASCII, UTF-8, UTF-16, UTF-32  
@@ -21,7 +23,9 @@ ByteMe is a **powerful, multi-directional conversion tool** that supports **130 
 - **ASCII** → UTF-8, UTF-16, UTF-32, Binary, Hexadecimal, Decimal, Base64  
 - **Two's Complement** → Sign Magnitude  
 - **Base64** → Base-32
+  
 ---
+
 ## 🖥️ **Screenshots**  
 1. **Homepage**
    ![Homepage UI](screenshots/UI.png)
@@ -33,7 +37,9 @@ ByteMe is a **powerful, multi-directional conversion tool** that supports **130 
    ![ASCII Conversion](screenshots/example.png)
 5. **Error Handling**
    ![Error Handling](screenshots/error_handling.png)
+   
 ---
+
 ## 🛠 Tech Stack
 ByteMe is built using the following technologies:
 ### Frontend:
@@ -45,7 +51,35 @@ ByteMe is built using the following technologies:
 ### Other Tools:
 - 📦 **npm**
 - 🌐 **Git & GitHub**
+  
 ---
-### Step 1: Clone the Repository  
-git clone https://github.com/your-username/ByteMe.git
-cd ByteMe
+
+## How to run ByteMe Locally
+1. **Clone the Repository:**  
+   ```bash
+   git clone git clone https://github.com/PushkarPisolkar04/ByteMe.git
+   cd ByteMe
+2. **Install Dependencies:**
+   ```bash
+   # Install frontend dependencies
+   cd frontend
+   npm install
+    
+   # Install backend dependencies
+   cd ../backend
+   npm install
+3. **Set Up Environment Variables:**
+   Create a .env file in the backend directory and configure the following:
+   ```bash
+   PORT=5000
+4. **Run the Project:**
+   ```bash
+   # Run backend
+   cd backend
+   node index.js
+
+   # Run frontend
+   cd ../frontend
+   npm run dev
+5. **Open in Browser:**
+   In your browser navigate to http://localhost:5173 and start converting.
