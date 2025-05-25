@@ -63,27 +63,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🖥️ Screenshots
 
 ### 1️⃣ **Homepage UI**
-![Homepage](screenshots/homepage.png)
+![Homepage](screenshots/UI.png)
 
 ### 2️⃣ **Binary to Decimal Conversion**
-![Binary to Decimal](screenshots/binary_to_decimal.png)
+![Binary to Decimal](screenshots/binarytodecimal.png)
 
-### 3️⃣ **Step-by-Step Explanation**
-![Step Explanation](screenshots/step_explanation.png)
+### 3️⃣ **Conversions**
+![Comparison Table](screenshots/conversions.png)
 
-### 4️⃣ **Comparison Table View**
-![Comparison Table](screenshots/comparison_table.png)
-
-### 5️⃣ **Interactive Tooltip & Diagrams**
-![Tooltip Example](screenshots/tooltip_example.png)
-
-### 6️⃣ **Error Handling & Validation**
+### 4️⃣ **Error Handling & Validation**
 ![Error Handling](screenshots/error_handling.png)
+
+### 5️⃣**Example**
+![Tooltip Example](screenshots/example.png)
 
 
 🛠️ Tech Stack
-Frontend: React.js / Next.js
-Backend: Node.js / Express
-Database: N/A (no persistence needed)
-Other Tools: Vite, Tailwind CSS
+Frontend: React.js / Next.js  
+Backend: Node.js / Express  
+Database: N/A (no persistence needed)  
+Other Tools: Vite, Tailwind CSS  
 

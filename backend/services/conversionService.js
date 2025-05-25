@@ -1,5 +1,3 @@
-// conversionService.js
-
 // 1. Binary Conversions
 
 function convertBinaryToDecimal(binary) {
@@ -24,7 +22,7 @@ function convertBinaryToDecimal(binary) {
   return isNegative ? -decimalValue : decimalValue;
 }
 
-// Binary → Hexadecimal
+
 function convertBinaryToHex(binary) {
   let isNegative = binary.startsWith('-');
   if (isNegative) {
@@ -90,7 +88,6 @@ function convertBinaryToOctal(binary) {
 }
 
 
-// Binary → Gray Code
 function convertBinaryToGray(binary) {
   let isNegative = binary.startsWith('-');
   if (isNegative) {
@@ -115,7 +112,6 @@ function convertBinaryToGray(binary) {
 }
 
 
-// Binary → BCD (Binary-Coded Decimal)
 function convertBinaryToBCD(binary) {
   let isNegative = binary.startsWith('-');
   if (isNegative) {
@@ -123,7 +119,7 @@ function convertBinaryToBCD(binary) {
   }
 
   let decimal = convertBinaryToDecimal(binary);
-  
+
   let [integerPart, fractionalPart] = decimal.toString().split('.');
 
   let bcdInteger = integerPart
@@ -140,11 +136,10 @@ function convertBinaryToBCD(binary) {
   }
 
   let result = bcdInteger + (bcdFraction ? '.' + bcdFraction : '');
-  
+
   return isNegative ? '-' + result : result;
 }
 
-// Binary → Excess-3 Code
 function convertBinaryToExcess3(binary) {
   let isNegative = binary.startsWith('-');
   if (isNegative) {
@@ -171,20 +166,19 @@ function convertBinaryToExcess3(binary) {
   }
 
   let result = excess3Integer + (excess3Fraction ? '.' + excess3Fraction : '');
-  
+
   return isNegative ? '-' + result : result;
 }
 
-// Binary → Floating Point
-// Binary → Floating Point (Including Negative, Fractional)
+
 function convertBinaryToFloatingPoint(binary) {
   let isNegative = binary[0] === '1';
   let binaryStr = isNegative ? binary.slice(1) : binary;
 
   let [integerPart, fractionalPart] = binaryStr.split('.');
-  
+
   let integerDecimal = parseInt(integerPart, 2);
-  
+
   let fractionalDecimal = 0;
   if (fractionalPart) {
     for (let i = 0; i < fractionalPart.length; i++) {
@@ -193,12 +187,10 @@ function convertBinaryToFloatingPoint(binary) {
   }
 
   let result = integerDecimal + fractionalDecimal;
-  
+
   return isNegative ? -result : result;
 }
 
-
-// Binary → IEEE 754 (Single Precision)
 function convertBinaryToIEEE754(binary) {
   let sign = binary[0] === '1' ? -1 : 1;
   let exponent = parseInt(binary.slice(1, 9), 2) - 127;
@@ -208,44 +200,36 @@ function convertBinaryToIEEE754(binary) {
 }
 
 
-// Binary → Hamming Code (7,4)
 function convertBinaryToHammingCode(binary) {
   if (binary.length !== 4) {
     return 'Hamming Code only works for 4-bit input.';
   }
-  
-  // Calculate parity bits for the 7-bit Hamming code
+
   let p1 = binary[0] ^ binary[1] ^ binary[3];
   let p2 = binary[0] ^ binary[2] ^ binary[3];
   let p3 = binary[1] ^ binary[2] ^ binary[3];
-  
+
   return `${p1}${p2}${binary[0]}${p3}${binary[1]}${binary[2]}${binary[3]}`;
 }
 
-
-// Binary → Parity Bit (Even Parity)
 function convertBinaryToParityBit(binary) {
   let parity = binary.split('').reduce((acc, bit) => acc ^ bit, 0); // XOR for parity
   return `${binary}${parity}`;
 }
 
 
-// Binary → Two's Complement
 function convertBinaryToTwosComplement(binary) {
   let decimal = parseInt(binary, 2);
-  
-  // If the number is negative
+
   if (binary[0] === '1') {
     let complement = Math.pow(2, binary.length) - decimal;
     return complement.toString(2);
   }
 
-  // Positive number, just return as is
+
   return binary;
 }
 
-
-// Binary → Roman Numerals
 function convertBinaryToRoman(binary) {
   let decimal = parseInt(binary, 2);
   return convertDecimalToRoman(decimal);
@@ -278,16 +262,13 @@ function convertDecimalToRoman(num) {
 }
 
 
-// Binary → ASCII
 function convertBinaryToASCII(binary) {
   return binary
-    .match(/.{8}/g)  // Match every 8 bits for a byte
-    .map(byte => String.fromCharCode(parseInt(byte, 2)))  // Convert to ASCII character
+    .match(/.{8}/g)
+    .map(byte => String.fromCharCode(parseInt(byte, 2)))
     .join('');
 }
 
-
-// Binary → Unicode UTF-8
 function convertBinaryToUTF8(binary) {
   return binary
     .match(/.{8}/g)
@@ -295,8 +276,6 @@ function convertBinaryToUTF8(binary) {
     .join('');
 }
 
-
-// Binary → Unicode UTF-16
 function convertBinaryToUTF16(binary) {
   return binary
     .match(/.{16}/g)
@@ -305,7 +284,6 @@ function convertBinaryToUTF16(binary) {
 }
 
 
-// Binary → Unicode UTF-32
 function convertBinaryToUTF32(binary) {
   const paddedBinary = binary.padStart(Math.ceil(binary.length / 32) * 32, '0');  // Ensure 32-bit chunks
   const codePoints = paddedBinary
@@ -317,25 +295,24 @@ function convertBinaryToUTF32(binary) {
       }
       return String.fromCodePoint(codePoint);
     });
-  
+
   return codePoints.join('');
 }
 
 // 2. Decimal Conversions
 
-// Decimal → Binary
+
 function convertDecimalToBinary(decimal) {
   return (decimal >>> 0).toString(2);
 }
 
 function convertDecimalToHex(decimal) {
-  // Handle negative numbers
+
   if (decimal < 0) return '-' + convertDecimalToHex(-decimal);
 
-  // Integer part in hexadecimal
   let integerPart = Math.floor(decimal).toString(16).toUpperCase();
 
-  // Fractional part in hexadecimal
+
   let fractionalPart = decimal - Math.floor(decimal);
   let hexFraction = '';
 
@@ -346,38 +323,33 @@ function convertDecimalToHex(decimal) {
     fractionalPart -= digit;
   }
 
-  // Return combined result
+
   return hexFraction ? integerPart + '.' + hexFraction : integerPart;
 }
 
 function convertDecimalToOctal(decimal) {
-  // Handle negative numbers
+
   if (decimal < 0) return '-' + convertDecimalToOctal(-decimal);
 
-  // Integer part in octal
   let integerPart = Math.floor(decimal).toString(8);
 
-  // Fractional part in octal
   let fractionalPart = decimal - Math.floor(decimal);
   let octalFraction = '';
 
-  while (fractionalPart > 0 && octalFraction.length < 8) {  // Limiting precision to 8 digits
-    fractionalPart *= 8;
+  while (fractionalPart > 0 && octalFraction.length < 8) {
     let digit = Math.floor(fractionalPart);
     octalFraction += digit.toString(8);
     fractionalPart -= digit;
   }
 
-  // Return combined result (integer + fractional part)
   return octalFraction ? integerPart + '.' + octalFraction : integerPart;
 }
 
-// Decimal → Gray Code
 function convertDecimalToGray(decimal) {
   return convertBinaryToGray(convertDecimalToBinary(decimal));
 }
 
-// Decimal → BCD (Binary-Coded Decimal)
+
 function convertDecimalToBCD(decimal) {
   return decimal
     .toString()
@@ -386,17 +358,15 @@ function convertDecimalToBCD(decimal) {
     .join(' ');
 }
 
-// Decimal → Excess-3 Code
 function convertDecimalToExcess3(decimal) {
   return (decimal + 3).toString(2);
 }
 
-// Decimal → Floating Point
 function convertDecimalToFloatingPoint(decimal) {
   return parseFloat(decimal);
 }
 
-// Decimal → IEEE 754 (Single Precision)
+
 function convertDecimalToIEEE754(decimal) {
   let buffer = new ArrayBuffer(4);
   let view = new DataView(buffer);
@@ -407,7 +377,6 @@ function convertDecimalToIEEE754(decimal) {
   return ieee754;
 }
 
-// Decimal → Signed/Unsigned Binary
 function convertDecimalToSignedUnsigned(decimal) {
   let unsigned = (decimal >>> 0).toString(2);
   let signed =
@@ -417,12 +386,10 @@ function convertDecimalToSignedUnsigned(decimal) {
   return { signed, unsigned };
 }
 
-// Decimal → Hexadecimal Floating Point
 function convertDecimalToHexFloatingPoint(decimal) {
   return decimal.toString(16).toUpperCase();
 }
 
-// Decimal → Roman Numerals
 function convertDecimalToRoman(decimal) {
   let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
   let numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
@@ -436,74 +403,71 @@ function convertDecimalToRoman(decimal) {
   return result;
 }
 
-// Decimal → Logarithmic Base (Base-n Logarithm)
 function convertDecimalToLogBase(decimal, base) {
   return Math.log(decimal) / Math.log(base);
 }
 
-// Decimal → Base-64 Encoding
 function convertDecimalToBase64(decimal) {
   return btoa(decimal.toString());
 }
 
-// Decimal → ASCII
 function convertDecimalToASCII(decimal) {
   return String.fromCharCode(decimal);
 }
 
-// Decimal → Unicode (UTF-8)
+
 function convertDecimalToUTF8(decimal) {
   return new TextEncoder().encode(String.fromCharCode(decimal));
 }
 
-// Decimal → Unicode (UTF-16)
+
 function convertDecimalToUTF16(decimal) {
   return String.fromCharCode(decimal).charCodeAt(0).toString(16).padStart(4, '0');
 }
 
-// Decimal → Unicode (UTF-32)
+
 function convertDecimalToUTF32(decimal) {
   return decimal.toString(16).padStart(8, '0');
 }
 
 // 3. Hexadecimal Conversions
 
-// Convert Hexadecimal to Binary
+
 function convertHexToBinary(hex) {
   return parseInt(hex, 16).toString(2);
 }
 
-// Convert Hexadecimal to Decimal
+
 function convertHexToDecimal(hex) {
   return parseInt(hex, 16);
 }
 
-// Convert Hexadecimal to Octal
+
 function convertHexToOctal(hex) {
   return parseInt(hex, 16).toString(8);
 }
 
-// Convert Hexadecimal to Gray Code
+
 function convertHexToGray(hex) {
   return convertBinaryToGray(convertHexToBinary(hex));
 }
 
-// Convert Hexadecimal to Floating Point
+
 function convertHexToFloatingPoint(hex) {
   return parseFloat(parseInt(hex, 16));
 }
 
-// Convert Hexadecimal to IEEE 754 (Scientific Notation)
+
 function convertHexToIEEE754(hex) {
   return convertHexToFloatingPoint(hex).toExponential();
 }
 
-// Convert Hexadecimal to Hexadecimal Floating Point (Same as Hex)
+
 function convertHexToHexFloatingPoint(hex) {
   return hex.toUpperCase();
 }
 
-// Convert Hexadecimal to BCD (Binary-Coded Decimal)
+
 function convertHexToBCD(hex) {
   let decimal = convertHexToDecimal(hex);
   return decimal
@@ -513,13 +477,13 @@ function convertHexToBCD(hex) {
     .join(" ");
 }
 
-// Convert Hexadecimal to Excess-3 Code
+
 function convertHexToExcess3(hex) {
   let decimal = convertHexToDecimal(hex) + 3;
   return decimal.toString(2);
 }
 
-// Convert Hexadecimal to Signed/Unsigned Binary
+
 function convertHexToSignedUnsigned(hex) {
   let binary = convertHexToBinary(hex);
   return {
@@ -529,7 +493,7 @@ function convertHexToSignedUnsigned(hex) {
   };
 }
 
-// Convert Hexadecimal to ASCII / Unicode (UTF-8, UTF-16, UTF-32)
+
 function convertHexToASCII(hex) {
   return String.fromCharCode(parseInt(hex, 16));
 }
@@ -546,20 +510,20 @@ function convertHexToUTF32(hex) {
   return String.fromCodePoint(parseInt(hex, 16));
 }
 
-// Convert Hexadecimal to Logarithmic Base (Base 2, 10, e)
+
 function convertHexToLogBase(hex, base) {
   let decimal = convertHexToDecimal(hex);
   return Math.log(decimal) / Math.log(base);
 }
 
-// Convert Hexadecimal to Base-64 Encoding
+
 function convertHexToBase64(hex) {
   let binaryStr = convertHexToBinary(hex);
   let decimal = parseInt(binaryStr, 2);
   return btoa(String.fromCharCode(decimal));
 }
 
-// Convert Hexadecimal to Roman Numerals
+
 function convertHexToRoman(hex) {
   let decimal = convertHexToDecimal(hex);
   let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
@@ -575,22 +539,22 @@ function convertHexToRoman(hex) {
 }
 
 // 4. Octal Conversions
-// Octal → Binary
+
 function convertOctalToBinary(octal) {
   return parseInt(octal, 8).toString(2);
 }
 
-//  Octal → Decimal
+
 function convertOctalToDecimal(octal) {
   return parseInt(octal, 8);
 }
 
-// Octal → Hexadecimal
+
 function convertOctalToHex(octal) {
   return parseInt(octal, 8).toString(16).toUpperCase();
 }
 
-// Octal → Roman Numerals
+
 function convertOctalToRoman(octal) {
   let decimal = convertOctalToDecimal(octal);
   let values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
@@ -605,40 +569,40 @@ function convertOctalToRoman(octal) {
   return result;
 }
 
-// Octal → Gray Code
+
 function convertOctalToGray(octal) {
   return convertBinaryToGray(convertOctalToBinary(octal));
 }
 
-//  Octal → Floating Point
+
 function convertOctalToFloatingPoint(octal) {
   return parseFloat(parseInt(octal, 8));
 }
 
-//  Octal → IEEE 754 (Scientific Notation)
+
 function convertOctalToIEEE754(octal) {
   let floatValue = convertOctalToFloatingPoint(octal);
   return floatValue.toExponential();
 }
 
-// Octal → Hexadecimal Floating Point
+
 function convertOctalToHexFloatingPoint(octal) {
   return parseInt(octal, 8).toString(16).toUpperCase();
 }
 
-//  Octal → BCD (Binary-Coded Decimal)
+
 function convertOctalToBCD(octal) {
   let decimal = convertOctalToDecimal(octal);
   return decimal.toString().split('').map(digit => parseInt(digit).toString(2).padStart(4, '0')).join(' ');
 }
 
-//  Octal → Excess-3 Code
+
 function convertOctalToExcess3(octal) {
   let decimal = convertOctalToDecimal(octal) + 3;
   return decimal.toString(2);
 }
 
-//  Octal → Signed/Unsigned Binary
+
 function convertOctalToSignedUnsigned(octal) {
   let decimal = convertOctalToDecimal(octal);
   return {
@@ -647,7 +611,7 @@ function convertOctalToSignedUnsigned(octal) {
   };
 }
 
-//  Octal → ASCII / Unicode (UTF-8, UTF-16, UTF-32)
+
 function convertOctalToASCII(octal) {
   return String.fromCharCode(convertOctalToDecimal(octal));
 }
@@ -664,7 +628,7 @@ function convertOctalToUTF32(octal) {
   return convertOctalToDecimal(octal).toString(16).padStart(8, '0');
 }
 
-//  Octal → Logarithmic Base (Base 2, 10, e)
+
 function convertOctalToLogBase2(octal) {
   return Math.log2(convertOctalToDecimal(octal));
 }
@@ -677,7 +641,7 @@ function convertOctalToLogBaseE(octal) {
   return Math.log(convertOctalToDecimal(octal));
 }
 
-//  Octal → Base-64 Encoding
+
 function convertOctalToBase64(octal) {
   let decimal = convertOctalToDecimal(octal);
   return btoa(String.fromCharCode(decimal));
@@ -686,8 +650,8 @@ function convertOctalToBase64(octal) {
 // 5. Roman Conversions
 
 function convertRomanToDecimal(roman) {
-  const romanMap = { 
-    'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000 
+  const romanMap = {
+    'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000
   };
   let decimal = 0;
   for (let i = 0; i < roman.length; i++) {
@@ -732,29 +696,29 @@ function convertRomanToBaseN(roman, base) {
 
 // 6. Gray Code conversions
 function convertGrayToBinary(gray) {
-  let binary = gray[0]; // First bit remains the same
+  let binary = gray[0];
   for (let i = 1; i < gray.length; i++) {
-      binary += (binary[i - 1] ^ gray[i]); // XOR operation
+    binary += (binary[i - 1] ^ gray[i]);
   }
   return binary;
 }
 
-// Function to convert Gray Code to Decimal
+
 function convertGrayToDecimal(gray) {
   let binary = convertGrayToBinary(gray);
-  return parseInt(binary, 2); // Convert binary to decimal
+  return parseInt(binary, 2);
 }
 
-// Function to convert Gray Code to Hexadecimal
+
 function convertGrayToHex(gray) {
   let decimal = convertGrayToDecimal(gray);
-  return decimal.toString(16).toUpperCase(); // Convert decimal to hexadecimal
+  return decimal.toString(16).toUpperCase();
 }
 
-// Function to convert Gray Code to Octal
+
 function convertGrayToOctal(gray) {
   let decimal = convertGrayToDecimal(gray);
-  return decimal.toString(8); // Convert decimal to octal
+  return decimal.toString(8);
 }
 
 // 7. BCD Conversions 
@@ -763,19 +727,19 @@ function convertBCDToDecimal(bcd) {
   return parseInt(decimal, 10);
 }
 
-// Function to convert BCD to Binary
+
 function convertBCDToBinary(bcd) {
   let decimal = convertBCDToDecimal(bcd);
   return decimal.toString(2);
 }
 
-// Function to convert BCD to Hexadecimal
+
 function convertBCDToHex(bcd) {
   let decimal = convertBCDToDecimal(bcd);
   return decimal.toString(16).toUpperCase();
 }
 
-// Function to convert BCD to Octal
+
 function convertBCDToOctal(bcd) {
   let decimal = convertBCDToDecimal(bcd);
   return decimal.toString(8);
@@ -787,19 +751,19 @@ function convertExcess3ToDecimal(excess3) {
   return parseInt(decimal, 10);
 }
 
-// Function to convert Excess-3 to Binary
+
 function convertExcess3ToBinary(excess3) {
   let decimal = convertExcess3ToDecimal(excess3);
   return decimal.toString(2);
 }
 
-// Function to convert Excess-3 to Hexadecimal
+
 function convertExcess3ToHex(excess3) {
   let decimal = convertExcess3ToDecimal(excess3);
   return decimal.toString(16).toUpperCase();
 }
 
-// Function to convert Excess-3 to Octal
+
 function convertExcess3ToOctal(excess3) {
   let decimal = convertExcess3ToDecimal(excess3);
   return decimal.toString(8);
@@ -812,7 +776,7 @@ function convertFloatingPointToBinary(floatNum) {
   let fracPart = floatNum - Math.floor(floatNum);
   let binaryFrac = '';
 
-  while (fracPart > 0 && binaryFrac.length < 10) {  // Limit fraction to 10 places
+  while (fracPart > 0 && binaryFrac.length < 10) {
     fracPart *= 2;
     if (fracPart >= 1) {
       binaryFrac += '1';
@@ -825,40 +789,39 @@ function convertFloatingPointToBinary(floatNum) {
   return intPart + '.' + binaryFrac;
 }
 
-// Function to convert Floating Point to Decimal (No Conversion Needed)
+
 function convertFloatingPointToDecimal(floatNum) {
   return parseFloat(floatNum);
 }
 
-// Function to convert Floating Point to Hexadecimal
+
 function convertFloatingPointToHex(floatNum) {
   return floatNum.toString(16).toUpperCase();
 }
 
-// Function to convert Floating Point to Octal
+
 function convertFloatingPointToOctal(floatNum) {
   return floatNum.toString(8);
 }
 
-// Function to convert Floating Point to IEEE 754 Representation
+
 function convertFloatingPointToIEEE754(floatNum) {
   let buffer = new ArrayBuffer(4);
   let view = new DataView(buffer);
-  view.setFloat32(0, floatNum, false);  // Store in IEEE 754 format
+  view.setFloat32(0, floatNum, false);
   return [...new Uint8Array(buffer)].map(b => b.toString(2).padStart(8, '0')).join(' ');
 }
 
-// Function to convert Floating Point to Hexadecimal Floating Point
+
 function convertFloatingPointToHexFloatingPoint(floatNum) {
   return floatNum.toString(16).toUpperCase();
 }
 
-// Function to convert Floating Point to ASCII (UTF-8)
+
 function convertFloatingPointToASCII(floatNum) {
   return String.fromCharCode(floatNum);
 }
 
-// Function to convert Floating Point to Unicode UTF-8, UTF-16, UTF-32
 function convertFloatingPointToUnicode(floatNum) {
   let unicodeChar = String.fromCodePoint(floatNum);
   let utf8 = Buffer.from(unicodeChar, 'utf8').toString('hex').toUpperCase();
@@ -878,28 +841,27 @@ function convertIEEE754ToBinary(ieee754Hex) {
   return ieeeBinary;
 }
 
-// Function to convert IEEE 754 (32-bit) to Decimal (Floating Point)
+
 function convertIEEE754ToDecimal(ieee754Hex) {
   let buffer = new ArrayBuffer(4);
   let view = new DataView(buffer);
 
   let intValue = parseInt(ieee754Hex, 16);
-  view.setUint32(0, intValue, false); // Set IEEE 754 hex as 32-bit value
-
-  return view.getFloat32(0, false); // Retrieve as floating point number
+  view.setUint32(0, intValue, false);
+  return view.getFloat32(0, false);
 }
 
-// Function to convert IEEE 754 to Hexadecimal (No Conversion Needed)
+
 function convertIEEE754ToHex(ieee754Hex) {
   return ieee754Hex.toUpperCase();
 }
 
-// Function to convert IEEE 754 to Floating Point (Same as Decimal)
+
 function convertIEEE754ToFloatingPoint(ieee754Hex) {
   return convertIEEE754ToDecimal(ieee754Hex);
 }
 
-// Function to convert IEEE 754 to Octal
+
 function convertIEEE754ToOctal(ieee754Hex) {
   return parseInt(ieee754Hex, 16).toString(8);
 }
@@ -909,38 +871,34 @@ function convertIEEE754ToOctal(ieee754Hex) {
 function convertHammingToBinary(hammingCode) {
   let n = hammingCode.length;
   let errorPos = 0;
-  
-  // Find error position using parity bits
+
+
   for (let i = 0; i < Math.log2(n) + 1; i++) {
     let pos = Math.pow(2, i);
     let parity = 0;
-    
+
     for (let j = pos - 1; j < n; j += 2 * pos) {
       for (let k = 0; k < pos && j + k < n; k++) {
         parity ^= parseInt(hammingCode[j + k]);
       }
     }
-    
+
     if (parity !== 0) errorPos += pos;
   }
-
-  // If error position found, correct it
   if (errorPos > 0) {
     let correctedCode = hammingCode.split('');
     correctedCode[errorPos - 1] = correctedCode[errorPos - 1] === '0' ? '1' : '0';
     hammingCode = correctedCode.join('');
   }
 
-  // Extract data bits (remove parity bits)
   let binaryData = "";
   for (let i = 0; i < n; i++) {
     if ((i & (i + 1)) !== 0) binaryData += hammingCode[i];
   }
-  
+
   return binaryData;
 }
 
-// Function to convert Hamming Code to Decimal
 function convertHammingToDecimal(hammingCode) {
   let binary = convertHammingToBinary(hammingCode);
   return parseInt(binary, 2);
@@ -948,10 +906,9 @@ function convertHammingToDecimal(hammingCode) {
 
 // 12. Parity Bit conversions 
 function convertParityToBinary(parityBinary) {
-  let dataBits = parityBinary.slice(0, -1); // Remove last bit (parity)
+  let dataBits = parityBinary.slice(0, -1);
   let parityBit = parseInt(parityBinary[parityBinary.length - 1]);
 
-  // Validate parity (assuming even parity)
   let calculatedParity = dataBits.split('').reduce((acc, bit) => acc ^ parseInt(bit), 0);
 
   if (calculatedParity !== parityBit) {
@@ -961,7 +918,7 @@ function convertParityToBinary(parityBinary) {
   return dataBits;
 }
 
-// Function to convert Parity Bit (Binary) to Decimal
+
 function convertParityToDecimal(parityBinary) {
   let binary = convertParityToBinary(parityBinary);
   return parseInt(binary, 2);
@@ -972,7 +929,6 @@ function convertASCIItoUTF8(text) {
   return new TextEncoder().encode(text);
 }
 
-// Convert ASCII to UTF-16 encoding
 function convertASCIItoUTF16(text) {
   let utf16Array = [];
   for (let char of text) {
@@ -981,7 +937,6 @@ function convertASCIItoUTF16(text) {
   return utf16Array.join(' ');
 }
 
-// Convert ASCII to UTF-32 encoding
 function convertASCIItoUTF32(text) {
   let utf32Array = [];
   for (let char of text) {
@@ -990,33 +945,29 @@ function convertASCIItoUTF32(text) {
   return utf32Array.join(' ');
 }
 
-// Convert ASCII to Binary
 function convertASCIItoBinary(text) {
   return text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
 }
 
-// Convert ASCII to Hexadecimal
 function convertASCIItoHex(text) {
   return text.split('').map(char => char.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0')).join(' ');
 }
 
-// Convert ASCII to Decimal (Character Codes)
 function convertASCIItoDecimal(text) {
   return text.split('').map(char => char.charCodeAt(0)).join(' ');
 }
 
-// Convert ASCII to Base-64 Encoding
 function convertASCIItoBase64(text) {
   return btoa(text);
 }
 
 // 14. 2's complement conversions
 function convertTwosComplementToSignMagnitude(binary) {
-  const isNegative = binary[0] === '1'; // Check if the number is negative
+  const isNegative = binary[0] === '1';
   let signMagnitude = '';
-  
+
   if (isNegative) {
-    // Invert the bits and add 1 to get the magnitude
+
     let invertedBinary = '';
     for (let i = 0; i < binary.length; i++) {
       invertedBinary += binary[i] === '1' ? '0' : '1';
@@ -1024,7 +975,7 @@ function convertTwosComplementToSignMagnitude(binary) {
     let magnitude = (parseInt(invertedBinary, 2) + 1).toString(2).padStart(binary.length - 1, '0');
     signMagnitude = '1' + magnitude;
   } else {
-    signMagnitude = '0' + binary.slice(1); // Keep as is for positive values
+    signMagnitude = '0' + binary.slice(1);
   }
 
   return signMagnitude;
@@ -1032,17 +983,17 @@ function convertTwosComplementToSignMagnitude(binary) {
 
 // 15. Base 64 to base 32 
 function convertBase64ToBase32(base64) {
-  // Decode the Base64 string to bytes
+
   let binaryString = atob(base64);
   let bytes = [];
   for (let i = 0; i < binaryString.length; i++) {
     bytes.push(binaryString.charCodeAt(i));
   }
 
-  // Base32 alphabet
+
   const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
-  // Convert the bytes to Base32
+
   let base32 = '';
   let buffer = 0;
   let bitsInBuffer = 0;
@@ -1057,12 +1008,12 @@ function convertBase64ToBase32(base64) {
     }
   }
 
-  // Handle remaining bits
+
   if (bitsInBuffer > 0) {
     base32 += base32Chars[(buffer << (5 - bitsInBuffer)) & 31];
   }
 
-  // Add padding if necessary
+
   while (base32.length % 8 !== 0) {
     base32 += '=';
   }
@@ -1070,7 +1021,7 @@ function convertBase64ToBase32(base64) {
   return base32;
 }
 
-// EXPORT FUNCTIONS
+
 module.exports = {
   convertBinaryToDecimal,
   convertBinaryToHex,
