@@ -60,16 +60,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## **Screenshots**  
 
-**Screenshots to Include:**  
-1. **Homepage** – Shows the main UI of ByteMe.  
-2. **Number Conversion** – A working example of Binary → Decimal conversion.  
-3. **Step-by-Step Explanation** – Screenshot of stepwise conversion process.  
-4. **Comparison Table View** – A comparison of multiple number systems.  
-5. **Interactive Diagram / Tooltip** – Example of visualized bitwise conversion.  
-6. **Error Handling** – Screenshot of invalid input detection and user-friendly error message.  
-
-📌 **How to Insert Screenshots in README?**  
-```md
 ## 🖥️ Screenshots
 
 ### 1️⃣ **Homepage UI**
