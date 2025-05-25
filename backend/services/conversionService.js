@@ -3,19 +3,15 @@
 // 1. Binary Conversions
 
 function convertBinaryToDecimal(binary) {
-  // Check if the binary number is negative
   let isNegative = binary.startsWith('-');
   if (isNegative) {
-    binary = binary.slice(1); // Remove the negative sign for processing
+    binary = binary.slice(1);
   }
 
-  // Split the binary number into integer and fractional parts
   let [integerPart, fractionalPart] = binary.split('.');
 
-  // Convert integer part from binary to decimal
   let decimalInteger = parseInt(integerPart, 2);
 
-  // Convert fractional part from binary to decimal (if exists)
   let decimalFraction = 0;
   if (fractionalPart) {
     decimalFraction = fractionalPart.split('').reduce((acc, digit, index) => {
@@ -23,27 +19,22 @@ function convertBinaryToDecimal(binary) {
     }, 0);
   }
 
-  // Combine the integer and fractional parts
   let decimalValue = decimalInteger + decimalFraction;
 
-  // If the number was negative, apply the negative sign
   return isNegative ? -decimalValue : decimalValue;
 }
+
 // Binary → Hexadecimal
 function convertBinaryToHex(binary) {
-  // Check if the binary number is negative
   let isNegative = binary.startsWith('-');
   if (isNegative) {
-    binary = binary.slice(1); // Remove the negative sign for processing
+    binary = binary.slice(1);
   }
 
-  // Split the binary number into integer and fractional parts
   let [integerPart, fractionalPart] = binary.split('.');
 
-  // Convert integer part from binary to hexadecimal
   let hexInteger = parseInt(integerPart, 2).toString(16).toUpperCase();
 
-  // Convert fractional part from binary to hexadecimal (if exists)
   let hexFraction = '';
   if (fractionalPart) {
     let fractionalValue = 0;
@@ -51,8 +42,7 @@ function convertBinaryToHex(binary) {
       fractionalValue += parseInt(fractionalPart[i]) * Math.pow(2, -(i + 1));
     }
 
-    // Convert fractional part to hexadecimal
-    let precision = 8;  // Limit precision to 8 hex digits
+    let precision = 8;
     while (fractionalValue > 0 && precision > 0) {
       fractionalValue *= 16;
       let digit = Math.floor(fractionalValue);
@@ -62,26 +52,21 @@ function convertBinaryToHex(binary) {
     }
   }
 
-  // Combine integer and fractional parts
   let result = hexFraction ? `${hexInteger}.${hexFraction}` : hexInteger;
 
-  // If the number was negative, apply the negative sign
   return isNegative ? '-' + result : result;
 }
+
 function convertBinaryToOctal(binary) {
-  // Check if the binary number is negative
   let isNegative = binary.startsWith('-');
   if (isNegative) {
-    binary = binary.slice(1); // Remove the negative sign for processing
+    binary = binary.slice(1);
   }
 
-  // Split the binary number into integer and fractional parts
   let [integerPart, fractionalPart] = binary.split('.');
 
-  // Convert integer part from binary to octal
   let octalInteger = parseInt(integerPart, 2).toString(8);
 
-  // Convert fractional part from binary to octal (if exists)
   let octalFraction = '';
   if (fractionalPart) {
     let fractionalValue = 0;
@@ -89,8 +74,7 @@ function convertBinaryToOctal(binary) {
       fractionalValue += parseInt(fractionalPart[i]) * Math.pow(2, -(i + 1));
     }
 
-    // Convert fractional part to octal
-    let precision = 8;  // Limit precision to 8 octal digits
+    let precision = 8;
     while (fractionalValue > 0 && precision > 0) {
       fractionalValue *= 8;
       let digit = Math.floor(fractionalValue);
@@ -100,67 +84,53 @@ function convertBinaryToOctal(binary) {
     }
   }
 
-  // Combine integer and fractional parts
   let result = octalFraction ? `${octalInteger}.${octalFraction}` : octalInteger;
 
-  // If the number was negative, apply the negative sign
   return isNegative ? '-' + result : result;
 }
 
 
 // Binary → Gray Code
 function convertBinaryToGray(binary) {
-  // Check if the binary is negative
   let isNegative = binary.startsWith('-');
   if (isNegative) {
-    binary = binary.slice(1); // Remove the negative sign for processing
+    binary = binary.slice(1);
   }
 
-  // Split the binary into integer and fractional parts
   let [integerPart, fractionalPart] = binary.split('.');
 
-  // Gray code conversion for the integer part
-  let gray = integerPart[0]; // The first bit remains the same
+  let gray = integerPart[0];
   for (let i = 1; i < integerPart.length; i++) {
-    // XOR the current bit with the previous one
     gray += (parseInt(integerPart[i - 1], 2) ^ parseInt(integerPart[i], 2)).toString();
   }
 
-  // Handle fractional part (if exists)
   if (fractionalPart) {
-    gray += '.'; // Add the decimal point for the fractional part
+    gray += '.';
     for (let i = 1; i < fractionalPart.length; i++) {
-      // XOR the current bit with the previous one for the fractional part
       gray += (parseInt(fractionalPart[i - 1], 2) ^ parseInt(fractionalPart[i], 2)).toString();
     }
   }
 
-  // If the number is negative, add the negative sign to the result
   return isNegative ? '-' + gray : gray;
 }
 
 
 // Binary → BCD (Binary-Coded Decimal)
 function convertBinaryToBCD(binary) {
-  // Handle negative numbers (convert absolute value first)
   let isNegative = binary.startsWith('-');
   if (isNegative) {
     binary = binary.slice(1);
   }
 
-  // Convert binary to decimal
   let decimal = convertBinaryToDecimal(binary);
   
-  // Handle fractional part (if exists)
   let [integerPart, fractionalPart] = decimal.toString().split('.');
 
-  // Convert integer part to BCD
   let bcdInteger = integerPart
     .split('')
     .map(digit => parseInt(digit).toString(2).padStart(4, '0'))
     .join(' ');
 
-  // Convert fractional part to BCD (if exists)
   let bcdFraction = '';
   if (fractionalPart) {
     bcdFraction = fractionalPart
@@ -169,24 +139,20 @@ function convertBinaryToBCD(binary) {
       .join(' ');
   }
 
-  // Return combined result
   let result = bcdInteger + (bcdFraction ? '.' + bcdFraction : '');
   
-  // If the number was negative, apply the negative sign
   return isNegative ? '-' + result : result;
 }
+
 // Binary → Excess-3 Code
 function convertBinaryToExcess3(binary) {
-  // Handle negative numbers (convert absolute value first)
   let isNegative = binary.startsWith('-');
   if (isNegative) {
     binary = binary.slice(1);
   }
 
-  // Convert binary to decimal
   let decimal = convertBinaryToDecimal(binary);
 
-  // Convert to Excess-3 code for integer part
   let integerPart = Math.floor(decimal);
   let excess3Integer = (integerPart + 3)
     .toString()
@@ -194,38 +160,31 @@ function convertBinaryToExcess3(binary) {
     .map(digit => parseInt(digit).toString(2).padStart(4, '0'))
     .join(' ');
 
-  // Handle fractional part (if exists)
   let fractionalPart = decimal - integerPart;
   let excess3Fraction = '';
   if (fractionalPart) {
-    // Convert fractional part to Excess-3 code by adding 3 to each decimal digit
-    fractionalPart = (fractionalPart * 10).toFixed(2); // Ensure precision
+    fractionalPart = (fractionalPart * 10).toFixed(2);
     excess3Fraction = fractionalPart
       .split('')
       .map(digit => (parseInt(digit) + 3).toString(2).padStart(4, '0'))
       .join(' ');
   }
 
-  // Return combined result
   let result = excess3Integer + (excess3Fraction ? '.' + excess3Fraction : '');
   
-  // If the number was negative, apply the negative sign
   return isNegative ? '-' + result : result;
 }
+
 // Binary → Floating Point
 // Binary → Floating Point (Including Negative, Fractional)
 function convertBinaryToFloatingPoint(binary) {
-  // Handle negative numbers
   let isNegative = binary[0] === '1';
   let binaryStr = isNegative ? binary.slice(1) : binary;
 
-  // Separate the integer and fractional parts
   let [integerPart, fractionalPart] = binaryStr.split('.');
   
-  // Convert the integer part to decimal
   let integerDecimal = parseInt(integerPart, 2);
   
-  // Convert the fractional part to decimal
   let fractionalDecimal = 0;
   if (fractionalPart) {
     for (let i = 0; i < fractionalPart.length; i++) {
@@ -233,10 +192,8 @@ function convertBinaryToFloatingPoint(binary) {
     }
   }
 
-  // Combine the integer and fractional parts
   let result = integerDecimal + fractionalDecimal;
   
-  // If negative, apply the negative sign
   return isNegative ? -result : result;
 }
 
@@ -244,10 +201,9 @@ function convertBinaryToFloatingPoint(binary) {
 // Binary → IEEE 754 (Single Precision)
 function convertBinaryToIEEE754(binary) {
   let sign = binary[0] === '1' ? -1 : 1;
-  let exponent = parseInt(binary.slice(1, 9), 2) - 127; // IEEE 754 exponent offset
+  let exponent = parseInt(binary.slice(1, 9), 2) - 127;
   let fraction = parseInt(binary.slice(9), 2) / Math.pow(2, 23);
 
-  // Combine the result with the sign, exponent, and fraction
   return sign * (1 + fraction) * Math.pow(2, exponent);
 }
 
@@ -617,6 +573,7 @@ function convertHexToRoman(hex) {
   }
   return result;
 }
+
 // 4. Octal Conversions
 // Octal → Binary
 function convertOctalToBinary(octal) {

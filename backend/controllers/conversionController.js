@@ -15,7 +15,6 @@ exports.convertNumber = (req, res) => {
     let result;
 
     switch (conversionType) {
-      // **Roman Numerals**
       case "decimalToRoman":
         result = conversionService.convertDecimalToRoman(inputValue);
         break;
@@ -43,8 +42,6 @@ exports.convertNumber = (req, res) => {
       case "romanToBaseN":
         result = conversionService.convertRomanToBaseN(inputValue);
         break;
-
-      // **Gray Code**
       case "binaryToGray":
         result = conversionService.convertBinaryToGray(inputValue);
         break;
@@ -54,24 +51,18 @@ exports.convertNumber = (req, res) => {
       case "grayToDecimal":
         result = conversionService.convertGrayToDecimal(inputValue);
         break;
-
-      // **BCD (Binary Coded Decimal)**
       case "decimalToBCD":
         result = conversionService.convertDecimalToBCD(inputValue);
         break;
       case "bcdToDecimal":
         result = conversionService.convertBCDToDecimal(inputValue);
         break;
-
-      // **Excess-3 Code**
       case "decimalToExcess3":
         result = conversionService.convertDecimalToExcess3(inputValue);
         break;
       case "excess3ToDecimal":
         result = conversionService.convertExcess3ToDecimal(inputValue);
         break;
-
-      // **Floating Point & IEEE 754**
       case "floatToIEEE754":
         if (!precision) return res.status(400).json({ error: "Precision (single/double) required" });
         result = conversionService.convertFloatToIEEE754(parseFloat(inputValue), precision);
@@ -79,24 +70,18 @@ exports.convertNumber = (req, res) => {
       case "ieee754ToFloat":
         result = conversionService.convertIEEE754ToFloat(inputValue, precision);
         break;
-
-      // **Hamming Code & Parity Bit**
       case "hammingCode":
         result = conversionService.convertBinaryToHammingCode(inputValue);
         break;
       case "parityBit":
         result = conversionService.convertBinaryToParityBit(inputValue);
         break;
-
-      // **Base-64 & Base-32 Encoding**
       case "base64Encode":
         result = conversionService.convertBase64Encode(inputValue);
         break;
       case "base32Encode":
         result = conversionService.convertBase32Encode(inputValue);
         break;
-
-      // **Binary to Other Conversions**
       case "binaryToDecimal":
         result = conversionService.convertBinaryToDecimal(inputValue);
         break;
@@ -142,8 +127,6 @@ exports.convertNumber = (req, res) => {
       case "binaryToUTF32":
         result = conversionService.convertBinaryToUTF32(inputValue);
         break;
-
-      // **Decimal to Other Conversions**
       case "decimalToBinary":
         result = conversionService.convertDecimalToBinary(inputValue);
         break;
@@ -174,8 +157,6 @@ exports.convertNumber = (req, res) => {
       case "decimalToUTF32":
         result = conversionService.convertDecimalToUTF32(inputValue);
         break;
-
-      // **Hex to Other Conversions**
       case "hexToBinary":
         result = conversionService.convertHexToBinary(inputValue);
         break;
@@ -203,8 +184,6 @@ exports.convertNumber = (req, res) => {
       case "hexToBase64":
         result = conversionService.convertHexToBase64(inputValue);
         break;
-
-      // **Octal to Other Conversions**
       case "octalToBinary":
         result = conversionService.convertOctalToBinary(inputValue);
         break;
@@ -229,7 +208,6 @@ exports.convertNumber = (req, res) => {
       case "octalToUTF32":
         result = conversionService.convertOctalToUTF32(inputValue);
         break;
-
       default:
         return res.status(400).json({ error: "Invalid conversion type" });
     }

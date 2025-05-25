@@ -44,16 +44,16 @@ h1 {
   font-size: 3rem;
   font-weight: 900;
   color: var(--secondary-color);
-  background: linear-gradient(45deg, #9c27b0, #673ab7); /* Gradient from purple to deep purple */
-  background-clip: text; /* Standard property */
-  -webkit-background-clip: text; /* WebKit support */
-  -moz-background-clip: text; /* Mozilla support */
+  background: linear-gradient(45deg, #9c27b0, #673ab7); 
+  background-clip: text;
+  -webkit-background-clip: text; 
+  -moz-background-clip: text;
   color: transparent;
   letter-spacing: 1px;
 }
 
 h2 {
-  font-size: 2.2rem; /* Larger size for heading */
+  font-size: 2.2rem; 
   color: var(--primary-color);
   font-weight: 800;
   letter-spacing: 1px;
@@ -66,11 +66,10 @@ h2 {
 }
 
 
-/* Main Container */
 .container {
   width: 100%;
   max-width: 500px;
-  padding: 30px; /* Increased padding */
+  padding: 30px;
   background: #ffffff;
   border-radius: 20px;
   box-shadow: 0 15px 40px var(--box-shadow);
@@ -84,7 +83,6 @@ h2 {
   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.15);
 }
 
-/* Form and Input Styling */
 select, input {
   width: 100%;
   padding: 14px;
@@ -106,7 +104,6 @@ select:focus, input:focus {
   outline: none;
 }
 
-/* Button Styling */
 button {
   padding: 18px;
   font-size: 1.2rem;
@@ -133,7 +130,6 @@ button:active {
   transform: scale(1);
 }
 
-/* Error Message and Result Display */
 .error, .result {
   width: 100%;
   max-width: 500px;

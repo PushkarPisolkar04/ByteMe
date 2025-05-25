@@ -1,53 +1,72 @@
-# **ByteMe 🔄 - The Ultimate Conversion Tool**  
-![ByteMe Logo](screenshots/logo.png)
+# **ByteMe - Number System Converter** 🔢
 
-## 📌 **About ByteMe**  
-ByteMe is a **powerful, multi-directional conversion tool** that supports **53 different conversion types**! Whether you need to convert **binary, decimal, hexadecimal, octal, IEEE 754, ASCII, Unicode, floating-point, BCD, Gray code**, or even **Roman numerals**, ByteMe has got you covered.  
+## About ByteMe
+ByteMe is a powerful number system conversion tool that supports multiple conversion types including binary, decimal, hexadecimal, octal, IEEE 754, and more. Built with React and Node.js, it provides real-time conversions with a clean, user-friendly interface.
 
-With an interactive, **step-by-step explanation system**, real-time conversion, and a clean, user-friendly UI, ByteMe makes number system conversions **easier than ever**!  
+## Features
+✅ Multiple Number System Conversions  
+✅ Real-time & Interactive UI  
+✅ Clean and Simple Interface  
+✅ Error Handling & Validation  
+
+## Supported Conversions
+- Binary ↔ Decimal, Hex, Octal
+- Decimal ↔ Binary, Hex, Octal
+- Hex ↔ Binary, Decimal, Octal
+- IEEE 754 Floating Point
+- ASCII & Unicode
+- Gray Code & BCD
+- And more!
+
+## Tech Stack
+- Frontend: React.js with Vite
+- Backend: Node.js/Express
+- Development Tools: ESLint, Concurrently
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+1. Clone the repository
+```bash
+git clone https://github.com/PushkarPisolkar04/ByteMe.git
+cd ByteMe
+```
+
+2. Install dependencies
+```bash
+npm run install-all
+```
+
+3. Start development servers
+```bash
+npm run dev
+```
+
+The application will be available at:
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5000
+
+### Production Build
+```bash
+npm run build
+npm start
+```
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+[Pushkar Pisolkar](https://github.com/PushkarPisolkar04)
 
 ---
 
-## 🎯 **Features**
-✅ **53+ Conversions Supported**  
-✅ **Real-time & Interactive UI**  
-✅ **Step-by-step conversion explanations**  
-✅ **Dynamic conversion filtering (only valid conversions are shown)**  
-✅ **Conversion tables, diagrams & visual aids**  
-✅ **Bit-level visualizations (e.g., Binary ↔ Gray Code)**  
-✅ **Side-by-side comparison views**  
-✅ **Tooltips & popups for extra learning**  
-✅ **Optimized for speed and accuracy**  
+## **Screenshots**  
 
----
-
-## 🔢 **Supported Conversions**  
-
-### **➤ Number System Conversions**  
-- Binary ↔ Decimal, Hex, Octal  
-- Decimal ↔ Binary, Hex, Octal  
-- Hex ↔ Binary, Decimal, Octal  
-- Octal ↔ Binary, Decimal, Hex  
-- Base-N Conversions  
-
-### **➤ Code & Encoding Systems**  
-- **Gray Code, BCD, Excess-3, Parity Bit, Hamming Code**  
-- **ASCII, UTF-8/16/32 Encoding & Decoding**  
-- **Floating-Point Conversions (IEEE 754, Hex FP, Decimal FP)**  
-
-### **➤ Miscellaneous Conversions**  
-- **Roman Numerals ↔ Other Number Systems**  
-- **Base-64, Base-32, Logarithmic Base Conversions**  
-- **Signed & Unsigned Binary, Two’s Complement**  
-
----
-
-## 🖥️ **Screenshots**  
-
-📌 **Where to Add Screenshots?**  
-Place all images in a `screenshots/` folder inside your project directory.  
-
-📌 **Screenshots to Include:**  
+**Screenshots to Include:**  
 1. **Homepage** – Shows the main UI of ByteMe.  
 2. **Number Conversion** – A working example of Binary → Decimal conversion.  
 3. **Step-by-Step Explanation** – Screenshot of stepwise conversion process.  

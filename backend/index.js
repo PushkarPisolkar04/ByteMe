@@ -3,15 +3,25 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const conversionRoutes = require("./routes/conversionRoutes");
 const errorHandler = require("./middleware/errorHandler");
+const securityMiddleware = require("./middleware/security");
 
 dotenv.config(); // Load environment variables
 
 const app = express();
 
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || "http://localhost:5173",
+  methods: ["GET", "POST"],
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
 // Middleware
-app.use(cors()); // Enable CORS for frontend communication
+app.use(cors(corsOptions)); // Enable CORS for frontend communication
 app.use(express.json()); // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // Support URL-encoded data
+
+securityMiddleware(app);
 
 // Request Logging Middleware
 app.use((req, res, next) => {
@@ -24,7 +34,7 @@ app.use("/api", conversionRoutes); // Use conversion routes under '/api'
 
 // Root Route (Health Check)
 app.get("/", (req, res) => {
-  res.send("API is working fine!"); // Simple message to confirm the API is running
+  res.json({ status: "API is operational" });
 });
 
 // Handle 404 errors for undefined routes

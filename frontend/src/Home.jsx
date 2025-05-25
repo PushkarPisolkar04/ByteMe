@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./index.css"; // Import styles for Home component
+import "./index.css";
 
 const conversionOptions = {
   "Binary": ["Decimal", "Hexadecimal", "Octal", "Gray Code", "BCD", "Excess-3", "Floating Point", "IEEE 754", "Hamming Code", "Parity Bit", "Two's Complement", "Roman Numerals", "ASCII", "UTF-8", "UTF-16", "UTF-32"],
@@ -126,7 +126,6 @@ const getConversionType = (inputType, outputType) => {
   return mapping[inputType]?.[outputType] || "invalid";
 };
 
-
 const Home = () => {
   const [inputType, setInputType] = useState("");
   const [outputType, setOutputType] = useState("");
@@ -136,8 +135,8 @@ const Home = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    setResult(null); // Reset result when input changes
-    setError(""); // Clear errors on input change
+    setResult(null);
+    setError("");
   }, [inputType, outputType, inputValue, precision]);
 
   const handleConvert = async () => {
@@ -149,7 +148,7 @@ const Home = () => {
     const conversionType = getConversionType(inputType, outputType);
 
     const requestBody = {
-      inputValue, // Use inputValue instead of 'input' to match API
+      inputValue,
       conversionType,
       precision,
     };
@@ -177,7 +176,6 @@ const Home = () => {
     <div className="converter-container">
       <h2>ByteMe</h2>
 
-      {/* Input Type Selection */}
       <div className="form-group">
         <label>Input Type:</label>
         <select value={inputType} onChange={(e) => setInputType(e.target.value)}>
@@ -188,7 +186,6 @@ const Home = () => {
         </select>
       </div>
 
-      {/* Output Type Selection */}
       {inputType && (
         <div className="form-group">
           <label>Convert To:</label>
@@ -201,13 +198,11 @@ const Home = () => {
         </div>
       )}
 
-      {/* Input Value */}
       <div className="form-group">
         <label>Input Value:</label>
         <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
       </div>
 
-      {/* Precision Selection for IEEE 754 */}
       {(inputType === "IEEE 754" || outputType === "IEEE 754") && (
         <div className="form-group">
           <label>Precision:</label>
@@ -218,17 +213,14 @@ const Home = () => {
         </div>
       )}
 
-      {/* Convert Button */}
       <button onClick={handleConvert}>Convert</button>
 
-      {/* Error Message */}
       {error && <p className="error">{error}</p>}
 
-      {/* Result Display */}
       {result !== null && (
         <div className="result">
-        <span>Result:</span> <span>{result}</span>
-      </div>
+          <span>Result:</span> <span>{result}</span>
+        </div>
       )}
     </div>
   );
