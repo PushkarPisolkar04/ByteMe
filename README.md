@@ -1,29 +1,12 @@
-# **ByteMe - Number System Converter** 🔢
+# **ByteMe - The Ultimate Conversion Tool**  
+![ByteMe Logo](screenshots/logo.png)
 
-## About ByteMe
-ByteMe is a powerful number system conversion tool that supports multiple conversion types including binary, decimal, hexadecimal, octal, IEEE 754, and more. Built with React and Node.js, it provides real-time conversions with a clean, user-friendly interface.
+## **About ByteMe**  
+ByteMe is a **powerful, multi-directional conversion tool** that supports **53 different conversion types**! Whether you need to convert **binary, decimal, hexadecimal, octal, IEEE 754, ASCII, Unicode, floating-point, BCD, Gray code**, or even **Roman numerals**, ByteMe has got you covered.  
 
-## Features
-✅ Multiple Number System Conversions  
-✅ Real-time & Interactive UI  
-✅ Clean and Simple Interface  
-✅ Error Handling & Validation  
+With an interactive, real-time conversion, and a clean, user-friendly UI, ByteMe makes number system conversions **easier than ever**!  
 
-## Supported Conversions
-- Binary ↔ Decimal, Hex, Octal
-- Decimal ↔ Binary, Hex, Octal
-- Hex ↔ Binary, Decimal, Octal
-- IEEE 754 Floating Point
-- ASCII & Unicode
-- Gray Code & BCD
-- And more!
-
-## Tech Stack
-- Frontend: React.js with Vite
-- Backend: Node.js/Express
-- Development Tools: ESLint, Concurrently
-
-## Getting Started
+## **Getting Started**
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -32,8 +15,8 @@ ByteMe is a powerful number system conversion tool that supports multiple conver
 ### Installation
 1. Clone the repository
 ```bash
-git clone https://github.com/PushkarPisolkar04/ByteMe.git
-cd ByteMe
+git clone https://github.com/PushkarPisolkar04/ByteMe
+cd byteme
 ```
 
 2. Install dependencies
@@ -41,7 +24,18 @@ cd ByteMe
 npm run install-all
 ```
 
-3. Start development servers
+3. Create environment files
+```bash
+# Frontend (.env)
+VITE_API_URL=http://localhost:5000
+
+# Backend (.env)
+PORT=5000
+NODE_ENV=development
+CORS_ORIGIN=http://localhost:5173
+```
+
+4. Start the development server
 ```bash
 npm run dev
 ```
