@@ -167,7 +167,9 @@ const Home = () => {
         setError("Unexpected response from server.");
       }
     } catch (err) {
-      console.error("Conversion Error:", err);
+      if (import.meta.env.DEV) {
+        console.error("Conversion Error:", err);
+      }
       setError(
         err.response?.data?.error || "Conversion failed. Please check your input."
       );
