@@ -34,9 +34,6 @@ The application will be available at:
 - `npm run start` - Start only the backend server
 - `npm run install-all` - Install dependencies for all packages
 - `npm run clean` - Clean all node_modules and build files
-- `npm run lint` - Run linting on both frontend and backend
-- `npm run audit` - Check for security vulnerabilities
-- `npm run audit:fix` - Fix security vulnerabilities automatically
 
 ## 📄 License
 MIT License
