@@ -1,13 +1,15 @@
 {
-  "name": "frontend",
+  "name": "byteme-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "audit": "npm audit",
+    "audit:fix": "npm audit fix"
   },
   "dependencies": {
     "axios": "^1.6.7",
@@ -24,5 +26,9 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "globals": "^13.24.0",
     "vite": "^5.1.3"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
