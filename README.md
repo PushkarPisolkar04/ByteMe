@@ -2,9 +2,6 @@
 
 A simple web tool for converting between different number systems and encodings.
 
-## 🌐 Live Demo
-**Try it here:** https://num-byte-me.vercel.app/
-
 ## 📝 About
 ByteMe converts between 60+ different number formats including:
 - Binary, Decimal, Hexadecimal, Octal
@@ -15,7 +12,7 @@ ByteMe converts between 60+ different number formats including:
 - Base64, Base32
 - Hamming Code, Parity Bit
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Local Development)
 ```bash
 git clone https://github.com/PushkarPisolkar04/ByteMe.git
 cd ByteMe
@@ -23,10 +20,23 @@ npm run install-all
 npm run dev
 ```
 
+The application will be available at:
+- **Frontend:** http://localhost:5173
+- **Backend API:** http://localhost:5000
+
 ## 🛠️ Tech Stack
 - **Frontend:** React + Vite
 - **Backend:** Node.js + Express
-- **Deployment:** Vercel
+- **Development:** Localhost only (no deployment)
+
+## 🔧 Available Scripts
+- `npm run dev` - Start both frontend and backend in development mode
+- `npm run start` - Start only the backend server
+- `npm run install-all` - Install dependencies for all packages
+- `npm run clean` - Clean all node_modules and build files
+- `npm run lint` - Run linting on both frontend and backend
+- `npm run audit` - Check for security vulnerabilities
+- `npm run audit:fix` - Fix security vulnerabilities automatically
 
 ## 📄 License
 MIT License

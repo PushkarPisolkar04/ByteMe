@@ -161,9 +161,7 @@ const Home = () => {
     };
 
     try {
-      const API_BASE_URL = import.meta.env.PROD 
-        ? window.location.origin 
-        : (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000");
+      const API_BASE_URL = "http://localhost:5000";
 
       const response = await axios.post(`${API_BASE_URL}/api/convert`, requestBody);
 
@@ -174,9 +172,7 @@ const Home = () => {
         setError("Unexpected response from server.");
       }
     } catch (err) {
-      if (import.meta.env.DEV) {
-        console.error("Conversion Error:", err);
-      }
+      console.error("Conversion Error:", err);
       
       let errorMessage = "Conversion failed. Please check your input.";
       

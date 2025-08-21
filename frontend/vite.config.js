@@ -6,11 +6,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    host: true, // Allow external connections
     proxy: {
       "/api": {
-        target: process.env.VITE_API_URL || "http://localhost:5000",
+        target: "http://localhost:5000",
         changeOrigin: true,
-        secure: true,
+        secure: false, // Allow HTTP for localhost
       },
     },
   },
