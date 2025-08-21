@@ -133,6 +133,7 @@ const Home = () => {
   const [precision, setPrecision] = useState("single");
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setResult(null);
@@ -144,6 +145,12 @@ const Home = () => {
       setError("Please fill all fields.");
       return;
     }
+
+    if (loading) return;
+
+    setLoading(true);
+    setError("");
+    setResult(null);
 
     const conversionType = getConversionType(inputType, outputType);
 
@@ -170,9 +177,20 @@ const Home = () => {
       if (import.meta.env.DEV) {
         console.error("Conversion Error:", err);
       }
-      setError(
-        err.response?.data?.error || "Conversion failed. Please check your input."
-      );
+      
+      let errorMessage = "Conversion failed. Please check your input.";
+      
+      if (err.response?.data?.error) {
+        errorMessage = err.response.data.error;
+      } else if (err.message) {
+        errorMessage = err.message;
+      } else if (err.code === 'NETWORK_ERROR') {
+        errorMessage = "Network error. Please check your connection.";
+      }
+      
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
     }
   };
 
